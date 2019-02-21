@@ -10,7 +10,7 @@ void chstat(struct user u)
 {
 
 }
-void challenges(struct user u)
+void statcmp(struct user u)
 {
 
 }
