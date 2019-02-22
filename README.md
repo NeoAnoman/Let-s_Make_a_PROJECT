@@ -28,5 +28,9 @@ Your deadline is one month but I expect this in 1 week if possible (at max)
 1st add your name to contributors.md  
 then check iswsues of this repository your work is described there with your name on it)  
 Your deadline is one month but I expect this in 1 week if possible (at max)  
+# Work aloted to Krishare  
+1st add your name to contributors.md  
+then check iswsues of this repository your work is described there with your name on it)  
+Your deadline is one month but I expect this in 1 week if possible (at max)  
 <br>
 # The pull request should only be made when work is finished and you checked it on your offline workstation....
