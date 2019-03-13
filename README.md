@@ -19,7 +19,8 @@ wscore(int)
 percent_comp(float)  
 time_tkn(timestamp)
 4. fscore:-  
-accuracy(float)
+accuracy(float)  
+t(double)-----This is the time taken to complete the challenge
 # Work aloted to Utsav_Blaze  
 1st add your name to contributors.md  
 then check iswsues of this repository your work is described there with your name on it)  
