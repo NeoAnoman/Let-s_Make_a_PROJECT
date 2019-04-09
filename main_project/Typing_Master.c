@@ -1,8 +1,5 @@
 #include<stdio.h>
 #include "user.c"
-#include "stat.c"
-#include "challenges.c"
-#include "tm.c"
 int welcome()
 {
     printf("*******Welcome to Typing Master******\nUse arrow keys to navigate and 'enter' to make a selection\n\n");
