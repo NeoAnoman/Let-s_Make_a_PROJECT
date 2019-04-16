@@ -17,7 +17,7 @@ fscore(struct)
 wscore(int)  
 3. tscore:-  
 percent_comp(float)  
-time_tkn(timestamp)
+time_tkn(timestamp)  
 accuracy(float)
 4. fscore:-  
 accuracy(float)  
