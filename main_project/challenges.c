@@ -2,6 +2,7 @@
 #include<math.h>
 #include<stdio.h>
 #include<string.h>
+#include"Project.c"
 struct user
 {
     char name[20];
@@ -141,11 +142,11 @@ void freestyle(struct user u)
    // printf("%.0f\n%.2f",f.t,f.accuracy);
     //printf("\n%d\n%d",i,j);
 }
-void wgame(struct user u)
+/*void wgame(struct user u)
 {
     printf("wgame called");
-}
-void rules()
+}*/
+void rules_tattack()
 {
     system("cls");
     printf("The folloing are the rules for playing....\n");
@@ -264,7 +265,7 @@ void tattack(struct user u)
         case 13:
             if(i==1)
             {
-                rules();
+                rules_tattack();
                 i=0;
                 break;
             }
@@ -332,7 +333,11 @@ void challenges(struct user u)
 {
     int i=1;
     system("cls");
+    SetColor(100);
+    gotoxy(30,5);
     printf("*********************WELCOME**********************\n");
+    gotoxy(30,7);
+    SetColor(98);
     printf("select from the following challenges\n");
     char s1[]="***1.Time Attack***\n2.FreeStyle\n3.WordGame\n";
     puts(s1);
@@ -352,14 +357,21 @@ void challenges(struct user u)
             else if(i==2)
                 freestyle(u);
             else if(i==3)
+            {
+                system("cls");
                 wgame(u);
+            }
             i=0;
             break;
         case 72:
             if(i==2)
             {
                 system("cls");
+                SetColor(100);
+                gotoxy(30,5);
                 printf("*********************WELCOME**********************\n");
+                gotoxy(30,7);
+                SetColor(98);
                 printf("select from the following challenges\n");
                 puts(s1);
                 i=1;
@@ -367,7 +379,11 @@ void challenges(struct user u)
             else if(i==3)
             {
                 system("cls");
+                SetColor(100);
+                gotoxy(30,5);
                 printf("*********************WELCOME**********************\n");
+                gotoxy(30,7);
+                SetColor(98);
                 printf("select from the following challenges\n");
                 puts(s2);
                 i=2;
@@ -375,7 +391,11 @@ void challenges(struct user u)
             else if(i==1)
             {
                 system("cls");
+                SetColor(100);
+                gotoxy(30,5);
                 printf("*********************WELCOME**********************\n");
+                gotoxy(30,7);
+                SetColor(98);
                 printf("select from the following challenges\n");
                 puts(s3);
                 i=3;
@@ -385,7 +405,11 @@ void challenges(struct user u)
             if(i==2)
             {
                 system("cls");
+                SetColor(100);
+                gotoxy(30,5);
                 printf("*********************WELCOME**********************\n");
+                gotoxy(30,7);
+                SetColor(98);
                 printf("select from the following challenges\n");
                 puts(s3);
                 i=3;
@@ -393,7 +417,11 @@ void challenges(struct user u)
             else if(i==1)
             {
                 system("cls");
+                SetColor(100);
+                gotoxy(30,5);
                 printf("*********************WELCOME**********************\n");
+                gotoxy(30,7);
+                SetColor(98);
                 printf("select from the following challenges\n");
                 puts(s2);
                 i=2;
@@ -401,7 +429,11 @@ void challenges(struct user u)
             else if(i==3)
             {
                 system("cls");
+                SetColor(100);
+                gotoxy(30,5);
                 printf("*********************WELCOME**********************\n");
+                gotoxy(30,7);
+                SetColor(98);
                 printf("select from the following challenges\n");
                 puts(s1);
                 i=1;
