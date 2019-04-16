@@ -83,7 +83,15 @@ struct fscore
 };
 void freestyle(struct user u)
 {
-    printf("freestyle called\n");
+    system ("cls");
+    gotoxy(30,5);
+    FILE *font=fopen("fontfree.txt","r");
+    while(!feof(font))
+    {
+        printf("%c",fgetc(font));
+    }
+    delay(4);
+    SetColor(102);
     clock_t start,end;
     struct fscore f;
     FILE *f1=fopen("freestyle.txt","r");
@@ -148,6 +156,7 @@ void freestyle(struct user u)
 }*/
 void rules_tattack()
 {
+
     system("cls");
     printf("The folloing are the rules for playing....\n");
     printf("\nIn Time attack as name suggest you have to fight the clock\nYou r given initially 5 sec to write a word\nSuccessful completion of a word will be awarded by \"+2\" time\n");
@@ -167,6 +176,16 @@ struct tscore
 };
 void start()
 {
+    SetColor(98);
+    system ("cls");
+    gotoxy(30,5);
+    FILE *font=fopen("warning.txt","r");
+    while(!feof(font))
+    {
+        printf("%c",fgetc(font));
+    }
+    delay(3);
+    SetColor(102);
     system("cls");
     clock_t start,end,s1,e1;
     printf("*****The challenge is started !!!! *****\n\nNow start writing the following paragraph....\n\n");
@@ -250,6 +269,15 @@ void start()
 }
 void tattack(struct user u)
 {
+    system ("cls");
+    gotoxy(30,5);
+    FILE *font=fopen("fonttattack.txt","r");
+    while(!feof(font))
+    {
+        printf("%c",fgetc(font));
+    }
+    delay(2.2);
+    SetColor(102);
     int i=1,c;
     system("cls");
     char s1[]={"****1.Read Rules****\t2.Start Challenge\t3.Exit"},s2[]={"1.Read Rules\t****2.Start Challenge****\t3.Exit"},s3[]={"1.Read Rules\t2.Start Challenge\t****3.Exit****"};

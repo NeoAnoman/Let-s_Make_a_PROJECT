@@ -25,7 +25,7 @@ void introduction()
 
 void rules()
 {
-    printf("")
+    printf("");
 }
 /*void delay(int number_of_seconds)
 {
