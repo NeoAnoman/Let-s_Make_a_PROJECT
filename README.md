@@ -18,6 +18,7 @@ wscore(int)
 3. tscore:-  
 percent_comp(float)  
 time_tkn(timestamp)
+accuracy(float)
 4. fscore:-  
 accuracy(float)  
 t(double)-----This is the time taken to complete the challenge
