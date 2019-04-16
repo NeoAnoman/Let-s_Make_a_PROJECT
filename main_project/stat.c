@@ -13,8 +13,16 @@ void rmstat(struct user u)
  while(!feof(f1))
  {fread(sts,size of(sts),1,f);
   if(sts.id==u.id)
-  {printf("TIME ATTACK"
-
+  {printf("TIME ATTACK");
+   printf("\n%f",sts.t.percent_comp);
+   printf("\n %mm",sts.t.time_tkn);
+   printf("\n %f",sts.t.accuracy);
+   printf("\n FREESTYLE");
+   printf("\n %f",sts.f.accuracy);
+   printf("\n %lf",sts.f.t1);
+   printf("\n WORD GAME");
+   printf("%d",wscore);
+  } 
 }
 void chstat(struct user u)
 {
