@@ -90,7 +90,7 @@ void freestyle(struct user u)
     {
         printf("%c",fgetc(font));
     }
-    delay(4);
+    delay(2);
     SetColor(102);
     clock_t start,end;
     struct fscore f;
@@ -266,6 +266,8 @@ void start()
     ts.percent_comp=(i/strlen(p[k].p))*100;
     ts.accuracy=(j/i)*100;
     printf("%.0f\n%.2f\n%.2f\n",ts.time_tkn,ts.percent_comp,ts.accuracy);
+    getch();
+    fflush(stdin);
 }
 void tattack(struct user u)
 {
@@ -294,14 +296,14 @@ void tattack(struct user u)
             if(i==1)
             {
                 rules_tattack();
-                i=0;
-                break;
             }
             else if(i==2)
             {
                 start(u);
-                i=0;
-                break;
+                system("cls");
+                printf("*********************WELCOME TO THE TIME ATTACK CHALLENGE**********************\n");
+                puts(s2);
+                i=2;
             }
             else if(i==3)
             {
@@ -367,10 +369,11 @@ void challenges(struct user u)
     gotoxy(30,7);
     SetColor(98);
     printf("select from the following challenges\n");
-    char s1[]="***1.Time Attack***\n2.FreeStyle\n3.WordGame\n";
+    char s1[]="***1.Time Attack***\n2.FreeStyle\n3.WordGame\n4.Exit";
     puts(s1);
-    char s2[]="1.Time Attack\n***2.FreeStyle***\n3.WordGame\n";
-    char s3[]="1.Time Attack\n2.FreeStyle\n***3.WordGame***\n";
+    char s2[]="1.Time Attack\n***2.FreeStyle***\n3.WordGame\n4.Exit";
+    char s3[]="1.Time Attack\n2.FreeStyle\n***3.WordGame***\n4.Exit";
+    char s4[]="1.Time Attack\n2.FreeStyle\n3.WordGame\n***4.Exit***";
     char c;
     while(i!=0)
     {
@@ -381,15 +384,46 @@ void challenges(struct user u)
         {
         case 13:
             if(i==1)
-                tattack(u);
+                {
+                    tattack(u);
+                    system("cls");
+                    SetColor(100);
+                    gotoxy(30,5);
+                    printf("*********************WELCOME**********************\n");
+                    gotoxy(30,7);
+                    SetColor(98);
+                    printf("select from the following challenges\n");
+                    puts(s1);
+                }
             else if(i==2)
-                freestyle(u);
+                {
+                    freestyle(u);
+                    system("cls");
+                    SetColor(100);
+                    gotoxy(30,5);
+                    printf("*********************WELCOME**********************\n");
+                    gotoxy(30,7);
+                    SetColor(98);
+                    printf("select from the following challenges\n");
+                    puts(s2);
+                }
             else if(i==3)
             {
                 system("cls");
                 wgame(u);
+                system("cls");
+                SetColor(100);
+                gotoxy(30,5);
+                printf("*********************WELCOME**********************\n");
+                gotoxy(30,7);
+                SetColor(98);
+                printf("select from the following challenges\n");
+                puts(s3);
             }
-            i=0;
+            else if(i==4)
+            {
+                i=0;
+            }
             break;
         case 72:
             if(i==2)
@@ -417,6 +451,18 @@ void challenges(struct user u)
                 i=2;
             }
             else if(i==1)
+            {
+                system("cls");
+                SetColor(100);
+                gotoxy(30,5);
+                printf("*********************WELCOME**********************\n");
+                gotoxy(30,7);
+                SetColor(98);
+                printf("select from the following challenges\n");
+                puts(s4);
+                i=4;
+            }
+            else if(i==4)
             {
                 system("cls");
                 SetColor(100);
@@ -455,6 +501,18 @@ void challenges(struct user u)
                 i=2;
             }
             else if(i==3)
+            {
+                system("cls");
+                SetColor(100);
+                gotoxy(30,5);
+                printf("*********************WELCOME**********************\n");
+                gotoxy(30,7);
+                SetColor(98);
+                printf("select from the following challenges\n");
+                puts(s4);
+                i=4;
+            }
+            else if(i==4)
             {
                 system("cls");
                 SetColor(100);
