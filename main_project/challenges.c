@@ -527,10 +527,10 @@ void challenges(struct user u)
         }
     }
 }
-void main()
+/*void main()
 {
     struct user u;
     //challengesw(u);
     //challengesview(u);
     challenges(u);
-}
+}*/
