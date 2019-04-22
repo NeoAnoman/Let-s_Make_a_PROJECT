@@ -25,7 +25,12 @@ void rmstat(struct user u)
   } 
 }
 void chstat(struct user u)
-{
+{u.t.percent_comp=0;
+ u.t.time_tkn=0;
+ u.t.accuracy=0;
+ u.f.accuracy=0;
+ u.f.t1=0;
+ u.wscore=0;
 
 }
 void statcmp(struct user u)
