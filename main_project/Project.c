@@ -4,7 +4,7 @@
 #include <time.h>
 
 
-void introduction()
+int introduction()
 {
     //gotoxy(00,00);
     //SetColor(500);
@@ -17,15 +17,45 @@ void introduction()
     printf("\n\t\t||      || ||   || ||  ||  ||  ||         ||      ||  || || |||| || ||        ");
     printf("\n\t\t||  ||  || ||   || ||||    ||  ||         ||  ||| |||||| ||  ||  || |||   ");
     printf("\n\t\t||  ||  || ||   || ||  ||  ||  ||         ||  ||| ||  || ||      || ||         ");
-    printf("\n\t\t|||||||||| ||||||| ||   || |||||          ||||||| ||  || ||      || ||||||  \n ");
+    printf("\n\t\t|||||||||| ||||||| ||   || |||||          ||||||| ||  || ||      || ||||||  \n\n\n ");
     delay(3);
-    system("CLS");
+
+    printf("\n\nPress ENTER to Continue  Or SPACEBAR to Exit: ");
+    int ch=getch();
+    if(ch==13)
+    {
+        system("CLS");
+//    print
+        rules();
+    }
+    else if(ch==32)
+        return ch;
 
 }
 
 void rules()
 {
-    printf("");
+    printf("\n\tRules of the game are as following :");
+    printf("\n\t* A random word will appear on the screen.");
+    printf("\n\t* You have to write the word below it within specified time limit.");
+    printf("\n\t* You have initial time limit of 6 seconds.");
+    printf("\n\t* Time limit will decrease on subsequent levels by 0.5 seconds until limit has reached 1.5 seconds.");
+    printf("\n\t* You will be awarded 5 Points on every correct response.");
+    printf("\n\t* For every incorrect response your Lives will decrease by 1.");
+    printf("\n\t* You have initially 5 Lives.");
+    printf("\n\t* For every two correct answers your Level will increase.");
+    delay(1);
+    printf("\n\nPress ENTER to Continue  Or SPACEBAR to go Back : ");
+    int ch=getch();
+    if(ch==13)
+    {
+        system("CLS");
+    }
+    else
+    {
+        system("CLS");
+        introduction();
+    }
 }
 /*void delay(int number_of_seconds)
 {
@@ -40,7 +70,8 @@ void rules()
         ;
 }*/
 
-int starttime,endtime,d=5,checkturns=0;
+int starttime,endtime,checkturns=1,Lives=5,Levels=1;;
+float timeLimit=5;
 
 void delay(int number_of_seconds)
 {
@@ -57,9 +88,12 @@ SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
 }
 
 //char* word()
-void wgame()
+int wgame()
 {
-     introduction();
+     int val=introduction();
+
+     if(val==32)
+        return 0;
 
    //printf("C programming");
     int flag=1;
@@ -92,6 +126,11 @@ void wgame()
 
 do
    {
+
+    SetColor(110);
+    gotoxy(45,5);
+    printf("LEVEL : %d",Levels);
+
     SetColor(100);
     static int score=0;
     int i=0;
@@ -122,28 +161,56 @@ do
     //delay(5);
     gets(s2);
     endtime=time(NULL);
-    if(endtime-starttime>d)
+
+    if(endtime-starttime>timeLimit)
     {
+      Lives--;
       SetColor(150);
-      gotoxy(50,17);
+      gotoxy(50,18);
       printf("Time Limit Exceeded!!!");
-      printf("\nYour Final Score Is : %d",score);
-      exit(0);
+
+      if(Lives)
+        {
+            gotoxy(50,19);
+            printf("You have %d Lives left",Lives);
+            delay(2);
+            system("CLS");
+            continue;
+        }
+      if(!Lives)
+        {
+            delay(2);
+            system("CLS");
+            SetColor(110);
+            gotoxy(45,5);
+            printf("\nYour Final Score Is : %d",score);
+            //goto startAgain;
+            flag=0;
+           // exit(0);
+           break;
+        }
     }
     else
     {
-        if(checkturns>4)
-            d-=1;
+        if(checkturns>1)
+        {
+            Levels+=1;
+            gotoxy(50,17);
+            timeLimit-=0.5;
+            checkturns=0;
+            printf("Now your time limit is %0.1fs",timeLimit);
+          //delay(1);
+        }
     }
 
     SetColor(150);
-    gotoxy(50,17);
+    gotoxy(50,18);
     if(strcmpi(s1,s2)==0)
     {
         checkturns++;
         printf("Yippee,Correct Answer!!!!:)");
-        score+=100;
-        gotoxy(50,18);
+        score+=5;
+        gotoxy(50,19);
         SetColor(300);
         printf("Your Score Is : %d",score);
         delay(2);
@@ -153,11 +220,33 @@ do
     {
 
         printf("Sorry,Wrong Answer!:(");
-        gotoxy(50,18);
+        Lives--;
+
+        gotoxy(50,19);
         SetColor(300);
-        printf("Your Final Score Is : %d",score);
-        flag=0;
-        exit(0);
+
+        if(Lives)
+        {
+            if(Lives==1)
+              printf("You have %d Live left",Lives);
+            else
+                printf("You have %d Lives left",Lives);
+        }
+
+        delay(2);
+        system("CLS");
+
+        if(!Lives)
+        {
+            SetColor(110);
+            gotoxy(45,5);
+            printf("\nYour Final Score Is : %d",score);
+            flag=0;
+            SetColor(0);
+            //goto startAgain;
+            //exit(0);
+            break;
+        }
     }
 
     /*for(j=0;*(rword[num]+j)!='\0';j++)
@@ -176,6 +265,7 @@ do
                system("CLS");
            }
        }*/
+
    }while(flag);
 
 }
