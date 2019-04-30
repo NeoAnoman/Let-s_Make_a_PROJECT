@@ -4,6 +4,11 @@
 #include<string.h>
 #include"stat.c"
 #include"Project.c"
+
+struct user
+{
+    char name[20];
+};
 struct free
 {
     char h[100];
@@ -66,11 +71,7 @@ int challengesview(struct user u)
     for (i=0;i<10;i++)
     {
         printf("\n");
-        printf("struct free
-{
-    char h[100];
-    char p[2000];
-};%s\n%s\n",sf2[i].h,sf2[i].p);
+        printf("%s\n%s\n",sf2[i].h,sf2[i].p);
     }
     //printf("%s\n%s\n",sf2[7].h,sf2[7].p,);
     fclose(f1);
@@ -78,6 +79,11 @@ int challengesview(struct user u)
     return i;
 }*/
 /////
+struct fscore
+{
+    float accuracy;
+    double t;//use %f to print this
+};
 void freestyle(struct user u)
 {
     system ("cls");
@@ -170,6 +176,12 @@ void rules_tattack()
     printf("*********************WELCOME TO THE TIME ATTACK CHALLENGE**********************\n");
     puts(s1);
 }
+struct tscore
+{
+    float accuracy;
+    double time_tkn;
+    float percent_comp;
+};
 void start()
 {
     SetColor(98);

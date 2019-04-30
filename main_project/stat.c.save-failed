@@ -1,8 +1,4 @@
 #include<stdio.h>
-struct user
-{
-    char name[20];
-};
 /*struct tscore
 {
     float accuracy;
@@ -19,18 +15,6 @@ struct fscore
     float accuracy;
     double t;//use %f to print this
 };*/
-
-struct tscore
-{
-    float accuracy;
-    double time_tkn;
-    float percent_comp;
-};
-struct fscore
-{
-    float accuracy;
-    double t;//use %f to print this
-};
 struct stat
 {int id;
  struct tscore t;
