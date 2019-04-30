@@ -1,14 +1,14 @@
 #include<stdio.h>
 #include<string.h>
 #include"challenges.c"
-void chstat(struct user u)
+/*void chstat(struct user u)
 {
 
 }
 void rmstat(struct user u)
 {
 
-}
+}*/
 void tm(struct user u)
 {
     system("cls");

@@ -1,4 +1,9 @@
 #include<stdio.h>
+struct user
+{
+    int id;
+    char name[20];
+};
 /*struct tscore
 {
     float accuracy;
@@ -15,6 +20,18 @@ struct fscore
     float accuracy;
     double t;//use %f to print this
 };*/
+
+struct tscore
+{
+    float accuracy;
+    double time_tkn;
+    float percent_comp;
+};
+struct fscore
+{
+    float accuracy;
+    double t;//use %f to print this
+};
 struct stat
 {int id;
  struct tscore t;
@@ -33,17 +50,33 @@ void chstat(struct user u)
         {
             printf("TIME ATTACK");
             printf("\n%f",sts.t.percent_comp);
-            printf("\n %f",sts.t.time_tkn);
+            if(sts.t.time_tkn==0)
+            {
+                printf("Time Not available yet");
+            }
+            else
+            {
+                printf("\n %f",sts.t.time_tkn);
+            }
             printf("\n %f",sts.t.accuracy);
             printf("\n FREESTYLE");
             printf("\n %f",sts.f.accuracy);
-            printf("\n %f",sts.f.t);
+            if(sts.t.time_tkn==0)
+            {
+                printf("Time Not available yet");
+            }
+            else
+            {
+                printf("\n %f",sts.f.t);
+            }
             printf("\n WORD GAME");
             printf("%d",sts.wscore);
             break;
         }
     }
     fclose(f1);
+    getch();
+    fflush(stdin);
 }
 void rmstat(struct user u)
 {
@@ -69,6 +102,8 @@ void rmstat(struct user u)
     }
     fclose(f1);
     printf("\nTHE STATS ARE RESET\n");
+    getch();
+    fflush(stdin);
 }
 void statcmp(struct user u,struct stat s)
 {
@@ -110,7 +145,9 @@ void statcmp(struct user u,struct stat s)
             fwrite(&sts,sizeof(sts),1,f1);
             break;
         }
-
+    }
+    fclose(f1);
+    printf("The Stats are saved...\n");
 }
 /*void main()
 {

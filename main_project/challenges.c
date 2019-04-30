@@ -2,16 +2,14 @@
 #include<math.h>
 #include<stdio.h>
 #include<string.h>
+#include"stat.c"
 #include"Project.c"
-struct user
-{
-    char name[20];
-};
 struct free
 {
     char h[100];
     char p[2000];
 };
+struct stat s;
 /*void challengesw(struct user u)
 {
     int i,j;
@@ -68,7 +66,11 @@ int challengesview(struct user u)
     for (i=0;i<10;i++)
     {
         printf("\n");
-        printf("%s\n%s\n",sf2[i].h,sf2[i].p);
+        printf("struct free
+{
+    char h[100];
+    char p[2000];
+};%s\n%s\n",sf2[i].h,sf2[i].p);
     }
     //printf("%s\n%s\n",sf2[7].h,sf2[7].p,);
     fclose(f1);
@@ -76,11 +78,6 @@ int challengesview(struct user u)
     return i;
 }*/
 /////
-struct fscore
-{
-    float accuracy;
-    double t;//use %f to print this
-};
 void freestyle(struct user u)
 {
     system ("cls");
@@ -93,7 +90,7 @@ void freestyle(struct user u)
     delay(2);
     SetColor(102);
     clock_t start,end;
-    struct fscore f;
+    //struct fscore f;
     FILE *f1=fopen("freestyle.txt","r");
     char w[30],c1,c2,str[1500];
     int i=0,j=0,k,l;
@@ -140,11 +137,16 @@ void freestyle(struct user u)
     }
     end=time(NULL);
    // printf("%d\n%d\n",i,j);
-    f.t=((double)(end-start));
+    s.f.t=((double)(end-start));
     float i1=i,i2=j;
-    f.accuracy=((i2/i1)*100);
+    s.f.accuracy=((i2/i1)*100);
     system("cls");
-    printf("Great You have finished the challenge!!!!\n\nYour accuracy is :- %.2f\nAnd your Time taken is :-%.0f \n PRESS ANY KEY TO CONTINUE",f.accuracy,f.t);
+    printf("Great You have finished the challenge!!!!\n\nYour accuracy is :- %.2f\nAnd your Time taken is :-%.0f \n PRESS ANY KEY TO CONTINUE",s.f.accuracy,s.f.t);
+    s.t.accuracy=0;
+    s.t.time_tkn=99999;
+    s.t.percent_comp=0;
+    s.wscore=0;
+    statcmp(u,s);
     getch();
     //****************************************************     xxstatcmp(u,f);
    // printf("%.0f\n%.2f",f.t,f.accuracy);
@@ -168,13 +170,7 @@ void rules_tattack()
     printf("*********************WELCOME TO THE TIME ATTACK CHALLENGE**********************\n");
     puts(s1);
 }
-struct tscore
-{
-    float accuracy;
-    double time_tkn;
-    float percent_comp;
-};
-void start()
+void start(struct user u)
 {
     SetColor(98);
     system ("cls");
@@ -196,7 +192,7 @@ void start()
     double d=5,t=0;
     //printf("****WELCOME TO THE FREESTYLE MOD****\nType the following paragraph\n");
     struct free p[10];
-    struct tscore ts;
+    //struct tscore ts;
     srand(time(0));
     k=rand()%8;
     //k=6;
@@ -262,10 +258,14 @@ void start()
           //  break;
     }
     e1=time(NULL);
-    ts.time_tkn=e1-s1;
-    ts.percent_comp=(i/strlen(p[k].p))*100;
-    ts.accuracy=(j/i)*100;
-    printf("%.0f\n%.2f\n%.2f\n",ts.time_tkn,ts.percent_comp,ts.accuracy);
+    s.t.time_tkn=e1-s1;
+    s.t.percent_comp=(i/strlen(p[k].p))*100;
+    s.t.accuracy=(j/i)*100;
+    printf("%.0f\n%.2f\n%.2f\n",s.t.time_tkn,s.t.percent_comp,s.t.accuracy);
+    s.f.accuracy=0;
+    s.f.t=99999;
+    s.wscore=0;
+    statcmp(u,s);
     getch();
     fflush(stdin);
 }

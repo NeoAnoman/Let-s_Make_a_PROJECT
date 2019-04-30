@@ -3,7 +3,6 @@
 #include<windows.h>
 #include <time.h>
 
-
 int introduction()
 {
     //gotoxy(00,00);
@@ -88,7 +87,7 @@ SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
 }
 
 //char* word()
-int wgame()
+int wgame(struct user u)
 {
      int val=introduction();
 
@@ -97,7 +96,7 @@ int wgame()
 
    //printf("C programming");
     int flag=1;
-
+    int sco=0;
     int i,j,num;
     srand(time(NULL));
     //for(i=1;i<=5;i++)
@@ -265,9 +264,16 @@ do
                system("CLS");
            }
        }*/
-
+       sco=score;
    }while(flag);
-
+struct stat s;
+s.f.accuracy=0;
+s.f.t=999990;
+s.t.accuracy=0;
+s.wscore=sco;
+s.t.percent_comp=0;
+s.t.time_tkn=999990;
+statcmp(u,s);
 }
 
 
