@@ -1,9 +1,9 @@
 #include<stdio.h>
-struct user
-{
+struct user{
     int id;
     char name[20];
-};
+    char password[20];
+    };
 /*struct tscore
 {
     float accuracy;
@@ -43,9 +43,9 @@ void chstat(struct user u)
     system("cls");
     struct stat sts;
     FILE *f1=fopen("stat.txt","r");
-    while(!feof(f1))
+    while(fread(&sts,sizeof(sts),1,f1))
     {
-        fread(&sts,sizeof(sts),1,f1);
+        printf("%d\n",sts.id);
         if(sts.id==u.id)
         {
             printf("TIME ATTACK");
@@ -84,9 +84,9 @@ void rmstat(struct user u)
     struct stat sts;
     FILE *f1=fopen("stat.txt","a+");
     fseek(f1,0,SEEK_SET);
-    while(!feof(f1))
+    int k=0;
+    while(fread(&sts,sizeof(sts),1,f1))
     {
-        fread(&sts,sizeof(sts),1,f1);
         if(sts.id==u.id)
         {
             sts.t.percent_comp=0;
@@ -98,7 +98,19 @@ void rmstat(struct user u)
             fseek(f1,(-1)*(sizeof(sts)),SEEK_CUR);
             fwrite(&sts,sizeof(sts),1,f1);
             break;
+            k=1;
         }
+    }
+    if(k==0)
+    {
+        sts.t.percent_comp=0;
+        sts.t.time_tkn=0;
+        sts.t.accuracy=0;
+        sts.f.accuracy=0;
+        sts.f.t=0;
+        sts.wscore=0;
+        sts.id=u.id;
+        fwrite(&sts,sizeof(sts),1,f1);
     }
     fclose(f1);
     printf("\nTHE STATS ARE RESET\n");
@@ -111,9 +123,8 @@ void statcmp(struct user u,struct stat s)
     struct stat sts;
     FILE *f1=fopen("stat.txt","a+");
     fseek(f1,0,SEEK_SET);
-    while(!feof(f1))
+    while(fread(&sts,sizeof(sts),1,f1))
     {
-        fread(&sts,sizeof(sts),1,f1);
         if(sts.id==u.id)
         {
             if(sts.t.percent_comp<s.t.percent_comp)
@@ -148,6 +159,7 @@ void statcmp(struct user u,struct stat s)
     }
     fclose(f1);
     printf("The Stats are saved...\n");
+    getch();
 }
 /*void main()
 {

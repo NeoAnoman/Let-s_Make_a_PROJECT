@@ -1,11 +1,6 @@
 #include <stdio.h>
 #include<string.h>
-#include"Project.c"
-struct user{
-    int id;
-    char name[20];
-    char password[20];
-    };
+#include"tm.c"
 int newuser()
     {
         int i=0;
@@ -39,6 +34,7 @@ int newuser()
         fclose(f);
         printf("Your credentials have been saved \nand your USER ID IS %d\n%s\n%s",u.id,u.password,u.name);
         getch();
+        rmstat(u);
         fflush(stdin);
     /*    FILE *f1= fopen("user.bin","rb");
         fread(&u,sizeof(u),1,f1);
@@ -46,12 +42,12 @@ int newuser()
         fclose(f1);
         getch();*/
     }
-void main()
+/*void main()
 {
     struct user u;
     u.id=0;
     user();
-}
+}*/
 void uremove()
 {
     system("cls");
@@ -92,11 +88,12 @@ void uremove()
         printf("\nadskjkdasjas\n%d",u.id);
     }
     //rmstat(u);
-    remove("user.dat");
     fclose(f);
-    rename("user2.dat","user.dat");
     fclose(d);
+    remove("user.dat");
+    rename("user2.dat","user.dat");
     getch();
+    rmstat(u);
     fflush(stdin);
 }
 void login()
@@ -128,11 +125,13 @@ void login()
     {
         if(strcmp(ull.name,u)==0&&strcmp(ull.password,PA)==0&&ull.id==ui)
             {
-                printf("You Have logged in");
+                //printf("You Have logged in");
+                tm(ull);
                 fflush(stdin);
-                getch();
+                //getch();
                 //tmp(yaha jaao);
                 a=1;
+                break;
             }
     }
     if(a==0)

@@ -126,10 +126,10 @@ void tm(struct user u)
         }
     }
 }
-void main()
+/*void main()
 {
   //  delay(1);
     struct user u;
     strcpy (u.name,"ME");
     tm(u);
-}
+}*/

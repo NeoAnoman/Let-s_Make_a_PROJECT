@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include "user.c"
-#include "Project.c"
 int welcome()
 {
     char cr[30];
@@ -29,9 +28,19 @@ int welcome()
         {
         case 13:
             if(i==1)
-                newuser();
+                {
+                    newuser();
+                    system("cls");
+                    printf("*******Welcome to Typing Master******\nUse arrow keys to navigate and 'enter' to make a selection\n\n");
+                    puts(s1);
+                }
             else if(i==2)
-                user();
+                {
+                    user();
+                    system("cls");
+                    printf("*******Welcome to Typing Master******\nUse arrow keys to navigate and 'enter' to make a selection\n\n");
+                    puts(s2);
+                }
             else if(i==3)
                 i=0;
             break;
