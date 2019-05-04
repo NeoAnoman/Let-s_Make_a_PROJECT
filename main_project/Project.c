@@ -241,7 +241,7 @@ do
             gotoxy(45,5);
             printf("\nYour Final Score Is : %d",score);
             flag=0;
-            SetColor(0);
+            //SetColor(0);
             //goto startAgain;
             //exit(0);
             break;
@@ -273,6 +273,10 @@ s.t.accuracy=0;
 s.wscore=sco;
 s.t.percent_comp=0;
 s.t.time_tkn=999990;
+s.id=u.id;
+//printf("%d",s.wscore);
+//getch();
+//fflush(stdin);
 statcmp(u,s);
 }
 

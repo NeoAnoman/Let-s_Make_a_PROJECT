@@ -87,6 +87,7 @@ void rmstat(struct user u)
     int k=0;
     while(fread(&sts,sizeof(sts),1,f1))
     {
+        //printf("%d\n%d\n",sts.id,u.id);
         if(sts.id==u.id)
         {
             sts.t.percent_comp=0;
@@ -97,8 +98,9 @@ void rmstat(struct user u)
             sts.wscore=0;
             fseek(f1,(-1)*(sizeof(sts)),SEEK_CUR);
             fwrite(&sts,sizeof(sts),1,f1);
-            break;
             k=1;
+            printf("\nTHE STATS ARE RESET\n");
+            break;
         }
     }
     if(k==0)
@@ -111,22 +113,25 @@ void rmstat(struct user u)
         sts.wscore=0;
         sts.id=u.id;
         fwrite(&sts,sizeof(sts),1,f1);
+        printf("\nNew User Created\n");
     }
     fclose(f1);
-    printf("\nTHE STATS ARE RESET\n");
     getch();
     fflush(stdin);
 }
 void statcmp(struct user u,struct stat s)
 {
     system("cls");
+    //printf("control in function\n");
     struct stat sts;
     FILE *f1=fopen("stat.txt","a+");
     fseek(f1,0,SEEK_SET);
     while(fread(&sts,sizeof(sts),1,f1))
     {
+        //printf("in while loop");
         if(sts.id==u.id)
         {
+            //printf("conditions running");
             if(sts.t.percent_comp<s.t.percent_comp)
             {
                 sts.t.percent_comp=s.t.percent_comp;
@@ -150,6 +155,7 @@ void statcmp(struct user u,struct stat s)
             }
             if(sts.wscore<s.wscore)
             {
+             //   printf("\ntrue");
                 sts.wscore=s.wscore;
             }
             fseek(f1,(-1)*(sizeof(sts)),SEEK_CUR);
