@@ -82,8 +82,13 @@ void rmstat(struct user u)
 {
     system("cls");
     struct stat sts;
-    FILE *f1=fopen("stat.txt","a+");
-    fseek(f1,0,SEEK_SET);
+    FILE *f1;
+    if(!(f1=fopen("stat.txt","r+")))
+    {
+        fclose(f1);
+        f1=fopen("stat.txt","w+");
+    }
+    //fseek(f1,0,SEEK_SET);
     int k=0;
     while(fread(&sts,sizeof(sts),1,f1))
     {
@@ -124,8 +129,8 @@ void statcmp(struct user u,struct stat s)
     system("cls");
     //printf("control in function\n");
     struct stat sts;
-    FILE *f1=fopen("stat.txt","a+");
-    fseek(f1,0,SEEK_SET);
+    FILE *f1=fopen("stat.txt","r+");
+    //fseek(f1,0,SEEK_SET);
     while(fread(&sts,sizeof(sts),1,f1))
     {
         //printf("in while loop");

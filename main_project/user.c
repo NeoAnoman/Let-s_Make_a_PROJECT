@@ -75,6 +75,7 @@ void uremove()
             if(strcmp(u.name,username)==0&&strcmp(u.password,pass)==0)
             {
                 printf("\nID DELETED!!!!");
+                rmstat(u);
             }
             else
             {
@@ -87,13 +88,11 @@ void uremove()
     {
         printf("\nadskjkdasjas\n%d",u.id);
     }
-    //rmstat(u);
     fclose(f);
     fclose(d);
     remove("user.dat");
     rename("user2.dat","user.dat");
     getch();
-    rmstat(u);
     fflush(stdin);
 }
 void login()
