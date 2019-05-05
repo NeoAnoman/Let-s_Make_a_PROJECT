@@ -1,6 +1,8 @@
 # Typing Master  
 *As the name suggest this app is the solution to your typing problems..  
 *The Following are the modes that are accessible after u create a use account in the app..  
+NOTE:- To use the app just open start.bat on your windows machine.  
+For linux and other user just compile the typing_master.c on your c compiler.  
 # 1.Freestyle  
 Type a full paragraph from among 10 different and intresting paragraphs in the app  
 The accuracy and time taken to type the paragraph is stored as stats for your user id.  
