@@ -58,7 +58,7 @@ void chstat(struct user u)
             }
             else
             {
-                printf("%.2f",sts.t.time_tkn);
+                printf("%.2f seconds",sts.t.time_tkn);
             }
             printf("\nThe best accuracy till now is : %.2f\n********************************\n",sts.t.accuracy);
             SetColor(102);
@@ -72,7 +72,7 @@ void chstat(struct user u)
             }
             else
             {
-                printf("%.2f\n********************************\n",sts.f.t);
+                printf("%.2f seconds\n********************************\n",sts.f.t);
             }
             SetColor(102);
             printf("\n WORD GAME");

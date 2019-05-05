@@ -89,6 +89,9 @@ SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
 //char* word()
 int wgame(struct user u)
 {
+    checkturns=1;
+    Levels=1;
+    Lives=5;
      int val=introduction();
 
      if(val==32)
