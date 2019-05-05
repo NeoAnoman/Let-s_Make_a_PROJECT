@@ -8,15 +8,15 @@ int newuser()
         struct user u;
         u.id=0;
         FILE *f= fopen("user.dat","ab+");
-        fseek(f,0,SEEK_SET);
+        //fseek(f,0,SEEK_SET);
         while(!feof(f))
         {
          fread(&u,sizeof(u),1,f);
         }
         u.id+=1;
-        printf("Enter username");
-        scanf("%s",&u.name);
-        printf("enter password");
+        printf("Enter username\n");
+        gets(u.name);
+        printf("enter password\n");
         u.password[i]=getch();
         printf("*");
         while(u.password[i]!=13)
@@ -32,7 +32,7 @@ int newuser()
         //fread(&u,sizeof(u),1,f);
         //printf("%s",u.password);
         fclose(f);
-        printf("Your credentials have been saved \nand your USER ID IS %d\n%s\n%s",u.id,u.password,u.name);
+        printf("\nYour credentials have been saved \nand your USER ID IS :-\n%d\nYour password is :-\n%s\nYour UserName is :-\n%s\n",u.id,u.password,u.name);
         getch();
         rmstat(u);
         fflush(stdin);
@@ -51,6 +51,7 @@ int newuser()
 void uremove()
 {
     system("cls");
+    int chk=0;
     FILE *d= fopen("user2.dat","wb+");
     FILE *f= fopen("user.dat","rb+");
     struct user u;
@@ -59,13 +60,15 @@ void uremove()
     int uid;
     printf("enter the id number\n");
     scanf("%d",&uid);
+    fflush(stdin);
     printf("username to be deleted\n");
-    scanf("%s",&username);
+    gets(username);
     printf("enter the password for the above username\n");
+    fflush(stdin);
     scanf("%s",&pass);
     while(fread(&u,sizeof(u),1,f))
     {
-        printf("%d",u.id);
+        //printf("%d",u.id);
         if(u.id!=uid)
         {
             fwrite(&u,sizeof(u),1,d);
@@ -75,7 +78,9 @@ void uremove()
             if(strcmp(u.name,username)==0&&strcmp(u.password,pass)==0)
             {
                 printf("\nID DELETED!!!!");
-                rmstat(u);
+                chk=1;
+                break;
+                //rmstat(u);
             }
             else
             {
@@ -83,15 +88,19 @@ void uremove()
             }
         }
     }
-    fseek(d,0,SEEK_SET);
-    while(fread(&u,sizeof(u),1,d))
+    //fseek(d,0,SEEK_SET);
+    /*while(fread(&u,sizeof(u),1,d))
     {
         printf("\nadskjkdasjas\n%d",u.id);
-    }
+    }*/
     fclose(f);
     fclose(d);
     remove("user.dat");
     rename("user2.dat","user.dat");
+    if(chk==0)
+    {
+        printf("WRONG CREDENTIALS !!!!");
+    }
     getch();
     fflush(stdin);
 }
@@ -104,7 +113,8 @@ void login()
     int ui;
     SetColor(98);
     printf("ENTER USERNAME\n");
-    scanf("%s",u);
+    gets(u);
+    fflush(stdin);
     printf("ENTER PASSWORD\n");
     PA[i]=getch();
         printf("*");
@@ -115,6 +125,7 @@ void login()
                 printf("*");
         }
         PA[i]='\0';
+    fflush(stdin);
     printf("\nENTER USER ID\n");
     scanf("%d",&ui);
     FILE *f= fopen("user.dat","ab+");
@@ -146,7 +157,7 @@ int user()
     SetColor(98);
     int i=1;
     system("cls");
-    char s1[]="Enter Your Choice\n****1.Create New User****\n2.LOGIN\n3.REMOVE\n4.Exit",s2[]="Enter Your Choice\n1.Create New User\n****2.LOGIN****\n3.REMOVE\n4.Exit",s3[]="Enter Your Choice\n1.Create New User\n2.LOGIN\n****3.REMOVE****\n4.Exit",s4[]="Enter Your Choice\n1.Create New User\n2.LOGIN\n3.REMOVE\n****4.Exit****";
+    char s1[]="Enter Your Choice\n****1.LOGIN****\n2.DELETE A USER\n3.Exit",s2[]="Enter Your Choice\n1.LOGIN\n****2.DELETE A USER****\n3.Exit",s3[]="Enter Your Choice\n1.LOGIN\n2.DELETE A USER\n****3.Exit****";
     gotoxy(30,7);
     puts(s1);
     while(i!=0)
@@ -159,7 +170,7 @@ int user()
         case 13:
             if(i==1)
                 {
-                    newuser();
+                    login();
                     system("cls");
                     gotoxy(30,7);
                     SetColor(98);
@@ -167,21 +178,13 @@ int user()
                 }
             else if(i==2)
                 {
-                    login();
+                    uremove();
                     system("cls");
                     gotoxy(30,7);
                     SetColor(98);
                     puts(s2);
                 }
             else if(i==3)
-                {
-                    uremove();
-                    system("cls");
-                    gotoxy(30,7);
-                    SetColor(98);
-                    puts(s3);
-                }
-            else if(i==4)
                 {
                     i=0;
                 }
@@ -208,14 +211,6 @@ int user()
                 system("cls");
                 gotoxy(30,7);
                 SetColor(98);
-                puts(s4);
-                i=4;
-            }
-            else if(i==4)
-            {
-                system("cls");
-                gotoxy(30,7);
-                SetColor(98);
                 puts(s3);
                 i=3;
             }
@@ -236,14 +231,6 @@ int user()
                 SetColor(98);
                 puts(s2);
                 i=2;
-            }
-            else if(i==3)
-            {
-                system("cls");
-                gotoxy(30,7);
-                SetColor(98);
-                puts(s4);
-                i=4;
             }
             else if(i==3)
             {

@@ -118,7 +118,11 @@ void freestyle(struct user u)
         for(l=0;l<=strlen(p[k].p);l++)
         {
             if(l==i)
+            {
+                SetColor(98);
                 printf("*_*");
+                SetColor(102);
+            }
             printf("%c",p[k].p[l]);
         }
         c2=getch();
@@ -143,8 +147,9 @@ void freestyle(struct user u)
     system("cls");
     printf("Great You have finished the challenge!!!!\n\nYour accuracy is :- %.2f\nAnd your Time taken is :-%.0f \n PRESS ANY KEY TO CONTINUE",s.f.accuracy,s.f.t);
     s.t.accuracy=0;
-    s.t.time_tkn=99999;
+    s.t.time_tkn=0;
     s.t.percent_comp=0;
+    s.id=u.id;
     s.wscore=0;
     statcmp(u,s);
     getch();
@@ -229,7 +234,11 @@ void start(struct user u)
         for(l=0;l<=strlen(p[k].p);l++)
         {
             if(l==i)
+            {
+                SetColor(98);
                 printf("*_*");
+                SetColor(102);
+            }
             printf("%c",p[k].p[l]);
         }
             c2=getch();
@@ -261,8 +270,12 @@ void start(struct user u)
     s.t.time_tkn=e1-s1;
     s.t.percent_comp=(i/strlen(p[k].p))*100;
     s.t.accuracy=(j/i)*100;
-    printf("%.0f\n%.2f\n%.2f\n",s.t.time_tkn,s.t.percent_comp,s.t.accuracy);
+    /*printf("%.0f\n%.2f\n%.2f\n",s.t.time_tkn,s.t.percent_comp,s.t.accuracy);
+    fflush(stdin);
+    getch();
+    fflush(stdin);*/
     s.f.accuracy=0;
+    s.id=u.id;
     s.f.t=99999;
     s.wscore=0;
     statcmp(u,s);

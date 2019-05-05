@@ -45,32 +45,39 @@ void chstat(struct user u)
     FILE *f1=fopen("stat.txt","r");
     while(fread(&sts,sizeof(sts),1,f1))
     {
-        printf("%d\n",sts.id);
         if(sts.id==u.id)
         {
-            printf("TIME ATTACK");
-            printf("\n%f",sts.t.percent_comp);
+            printf("For User %s The Following Are the stats....\n",u.name);
+            printf("\nTime Attack Challenge...\n");
+            SetColor(98);
+            printf("\nPercentage Completion of paragraph : %.2f\n",sts.t.percent_comp);
+            printf("Time Taken to Complete that part of paragraph : ");
             if(sts.t.time_tkn==0)
             {
-                printf("Time Not available yet");
+                printf("No Time Availaible !!!");
             }
             else
             {
-                printf("\n %f",sts.t.time_tkn);
+                printf("%.2f",sts.t.time_tkn);
             }
-            printf("\n %f",sts.t.accuracy);
-            printf("\n FREESTYLE");
-            printf("\n %f",sts.f.accuracy);
+            printf("\nThe best accuracy till now is : %.2f\n********************************\n",sts.t.accuracy);
+            SetColor(102);
+            printf("\n FREESTYLE Challenge\n");
+            SetColor(98);
+            printf("\nThe best accuracy till now : %.2f\n",sts.f.accuracy);
+            printf("The best time taken to complete the challenge is : ");
             if(sts.t.time_tkn==0)
             {
-                printf("Time Not available yet");
+                printf("Time Not available yet\n********************************\n");
             }
             else
             {
-                printf("\n %f",sts.f.t);
+                printf("%.2f\n********************************\n",sts.f.t);
             }
+            SetColor(102);
             printf("\n WORD GAME");
-            printf("%d",sts.wscore);
+            SetColor(98);
+            printf("\n\nBest score : %d\n********************************\n",sts.wscore);
             break;
         }
     }
@@ -118,7 +125,8 @@ void rmstat(struct user u)
         sts.wscore=0;
         sts.id=u.id;
         fwrite(&sts,sizeof(sts),1,f1);
-        printf("\nNew User Created\n");
+        gotoxy(30,15);
+        printf("\n*********New User Successfully Created**********\n");
     }
     fclose(f1);
     getch();
@@ -137,24 +145,27 @@ void statcmp(struct user u,struct stat s)
         if(sts.id==u.id)
         {
             //printf("conditions running");
-            if(sts.t.percent_comp<s.t.percent_comp)
+            if(sts.t.percent_comp<=s.t.percent_comp)
             {
                 sts.t.percent_comp=s.t.percent_comp;
-            }
-            if(sts.t.time_tkn>s.t.time_tkn)
-            {
-                sts.t.time_tkn=s.t.time_tkn;
-            }
-
-            if(sts.t.accuracy<s.t.accuracy)
-            {
-                sts.t.accuracy=s.t.accuracy;
+                if(sts.t.time_tkn<s.t.time_tkn && s.t.percent_comp!=0)
+                {
+                    sts.t.time_tkn=s.t.time_tkn;
+                }
+                if(sts.t.accuracy<s.t.accuracy)
+                {
+                    sts.t.accuracy=s.t.accuracy;
+                }
             }
             if(sts.f.accuracy<s.f.accuracy)
             {
                 sts.f.accuracy=s.f.accuracy;
             }
-            if(sts.f.t>s.f.t)
+            if(sts.f.t>=s.f.t)
+            {
+                sts.f.t=s.f.t;
+            }
+            else if(sts.f.t==0 && s.f.accuracy!=0)
             {
                 sts.f.t=s.f.t;
             }
@@ -169,7 +180,7 @@ void statcmp(struct user u,struct stat s)
         }
     }
     fclose(f1);
-    printf("The Stats are saved...\n");
+    printf("\nThe Stats are saved...\n");
     getch();
 }
 /*void main()

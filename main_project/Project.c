@@ -272,7 +272,7 @@ s.f.t=999990;
 s.t.accuracy=0;
 s.wscore=sco;
 s.t.percent_comp=0;
-s.t.time_tkn=999990;
+s.t.time_tkn=0;
 s.id=u.id;
 //printf("%d",s.wscore);
 //getch();
