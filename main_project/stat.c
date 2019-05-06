@@ -66,7 +66,7 @@ void chstat(struct user u)
             SetColor(98);
             printf("\nThe best accuracy till now : %.2f\n",sts.f.accuracy);
             printf("The best time taken to complete the challenge is : ");
-            if(sts.t.time_tkn==0)
+            if(sts.f.t==0)
             {
                 printf("Time Not available yet\n********************************\n");
             }
