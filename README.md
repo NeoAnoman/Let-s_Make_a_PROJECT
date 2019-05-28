@@ -14,7 +14,7 @@ An interactive game that shows random words one by one and gives +5 points for e
 <br>
 # If anyone want to contribute  
 Go ahead fork the repository and start contributing  
-*Before getting started add yoour name to contrtibutors (though only the members of the group are approved to amke any edit in this repository)  
+*Before getting started add yoour name to contrtibutors   
 *The name should be Addded in same format as Neo Anoman is added then only the pull request shall be merged.  
 How to start contribution????  
 Well there is lot that can be added in this app since this is mde reaaly basic with only 3 challenges in the app but u can add more 
